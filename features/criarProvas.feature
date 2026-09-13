@@ -88,7 +88,6 @@ Scenario: Professor configura os dados de aplicação
     And eu vejo o campo "data da avaliação" com valor "29/09/2026"
     And eu vejo o campo "quantidade de alunos" com valor "38"
 
-
 Scenario: Professor finaliza a configuração de aplicação da prova
     Given eu estou logado como "professor"
     And eu estou na página "criação de provas"
