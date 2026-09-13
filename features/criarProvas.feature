@@ -87,3 +87,15 @@ Scenario: Professor configura os dados de aplicação
     Then eu vejo o campo "tipo da avaliação" com valor "bimestral"
     And eu vejo o campo "data da avaliação" com valor "29/09/2026"
     And eu vejo o campo "quantidade de alunos" com valor "38"
+
+
+Scenario: Professor finaliza a configuração de aplicação da prova
+    Given eu estou logado como "professor"
+    And eu estou na página "criação de provas"
+    And eu vejo a mensagem "etapa de configuração em andamento"
+    And eu vejo o campo "tipo da avaliação" com valor "bimestral"
+    And eu vejo o campo "data da avaliação" com valor "29/09/2026"
+    And eu vejo o campo "quantidade de alunos" com valor "38"
+    When eu seleciono a opção confirmar configuração
+    Then eu vejo a opção "finalizar criação de provas"
+    And eu vejo a opção "continuar editando prova"
