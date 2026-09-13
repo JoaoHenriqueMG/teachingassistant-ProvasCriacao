@@ -98,3 +98,15 @@ Scenario: Professor finaliza a configuração de aplicação da prova
     When eu seleciono a opção confirmar configuração
     Then eu vejo a opção "finalizar criação de provas"
     And eu vejo a opção "continuar editando prova"
+
+Scenario: Professor finaliza criação de provas
+    Given eu estou logado como "professor"
+    And eu estou na página "criação de provas"
+    And eu vejo o opção "finalizar criação de provas"
+    When eu seleciono a opção "finalizar criação de provas"
+    Then eu vejo a mensagem "prova criada"
+    And eu estou na página "criação de provas"
+    And eu vejo o campo "informações da prova"
+    And eu vejo a opção "sair"
+    And eu vejo a opção "criar mais provas"
+    And eu vejo o campo "provas criadas anteriormente"
