@@ -110,3 +110,10 @@ Scenario: Professor finaliza criação de provas
     And eu vejo a opção "sair"
     And eu vejo a opção "criar mais provas"
     And eu vejo o campo "provas criadas anteriormente"
+
+Scenario: Profesor visualiza provas criadas
+    Given eu estou logado como "professor"
+    And eu estou na página "criação de provas"
+    And eu vejo a opção "visualizar provas criadas anteriormente"
+    When eu seleciono a opção "visualizar provas criadas anteriormente"
+    Then eu vejo a lista "provas criadas anteriormente" com "algumas provas"
