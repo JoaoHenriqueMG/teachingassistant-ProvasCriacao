@@ -55,3 +55,14 @@ Scenario: Professor seleciona uma questão para a prova
     And eu vejo o campo "questões do assunto" com uma lista de questões sobre "requisitos"
     When eu seleciono uma questão de número "1" na lista de questões sobre o assunto "requisitos"
     Then eu vejo a lista "questões selecionadas" com a questão número "1" do assunto "requisitos" adicionada
+
+Scenario: Professor finaliza a configuração de aplicação da prova
+    Given eu estou logado como "professor"
+    And eu estou na página "criação de provas"
+    And eu vejo a mensagem "etapa de configuração em andamento"
+    And eu vejo o campo "tipo da avaliação" com valor "bimestral"
+    And eu vejo o campo "data da avaliação" com valor "29/09/2026"
+    And eu vejo o campo "quantidade de alunos" com valor "38"
+    When eu seleciono a opção confirmar configuração
+    Then eu vejo a opção "finalizar criação de provas"
+    And eu vejo a opção "continuar editando prova"
