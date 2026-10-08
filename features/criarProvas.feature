@@ -5,12 +5,91 @@ suas turmas.
 
 Feature: Geração de provas
     Como um professor responsável por uma disciplina
-    Eu quero gerar provas individuais para a turma
-    Para que eu possa monitorar o desempenho dos alunos e gerir melhor a turma
+    Eu selecionar as questões para uma prova
+    Para que posteriormente eu possa aplicar essa prova para a turma
 
 # -------------------------------------------------------------------------------------- #
 
 Scenarios
+
+Scenario: Professor procura por questões de um assunto
+    Given eu estou na página "criação de provas"
+    And eu vejo "duas" questões de "requisitos"
+    And eu vejo "quatro" questões de "gerência de configuração"
+    When eu quero ver questões de "requisitos"
+    Then eu vejo "duas" questões de "requistos"
+
+Scenario: Professor procura por questões de um assunto e não há questões desse assunto
+    Given eu estou na página "criação de provas"
+    And eu vejo "quatro" questões de "gerência de configuração"
+    When eu quero ver questões de "requisitos"
+    Then eu vejo "zero" questões de "requistos"
+    And a mensagem de que não há questões de "requisitos"
+
+Scenario: Professor procura por questões de um assunto e há somente uma questão desse assunto
+    Given eu estou na página "criação de provas"
+    And eu vejo "uma" questões de "requisitos"
+    When eu quero ver questões de "requisitos"
+    Then eu vejo "uma" questões de "requistos"
+
+Scenario: Professor procura por questões de um assunto e não há questões no sistema
+    Given eu estou na página "criação de provas"
+    And eu não há questões de nenhum assunto
+    When eu quero ver questões de "requisitos"
+    Then a mensagem de que não há questões de "requisitos"
+    And a mensagem de que não há questões cadastradas
+    
+# ------------------------------------------------------------------------------------------ #
+    
+Scenario: Professor seleciona um questão de um assunto para a prova
+    Given eu estou na página "criação de provas"
+    And eu vejo "duas" questões de "requisitos"
+    And eu vejo "quatro" questões de "gerência de configuração"
+    When eu seleciono a questão "um" de "requisitos"
+    Then eu vejo a questão "um" de "requisitos" entre as selecionadas para a prova
+
+Scenario: Professor seleciona questão de um assunto para a prova que já está selecionada
+    Given eu estou na página "criação de provas"
+    And eu vejo "duas" questões de "requisitos"
+    And eu vejo "quatro" questões de "gerência de configuração"
+    And a questão "um" de "requisitos" está selecionada para a prova
+    When eu seleciono a questão "um" de "requisitos"
+    Then eu vejo a mensagem de que a questão "um" de "requisitos" já está selecionada
+
+Scenario: Professor seleciona questões de um assunto para a prova para a qual uma já está selecionada
+    Given eu estou na página "criação de provas"
+    And eu vejo "duas" questões de "requisitos"
+    And eu vejo "quatro" questões de "gerência de configuração"
+    When eu seleciono a questão "um" de "requisitos"
+    When eu seleciono a questão "dois" de "requisitos"
+    Then eu vejo a questão "um" de "requisitos" entre as selecionadas para a prova
+    And eu vejo a questão "dois" de "requisitos" entre as selecionadas para a prova
+
+Scenario: Professor seleciona questão de um assunto para a prova
+    Given eu estou na página "criação de provas"
+    And eu vejo "duas" questões de "requisitos"
+    And eu vejo "quatro" questões de "gerência de configuração"
+    And a questão "um" de "requisitos" está selecionada para a prova
+    When eu seleciono a questão "um" de "requisitos"
+    And eu seleciono a questão "dois" de "requisitos"
+    Then eu vejo a mensagem de que a questão "um" de "requisitos" já está selecionada
+    And eu vejo a questão "um" de "requisitos" entre as selecionadas para a prova
+    And eu vejo a questão "dois" de "requisitos" entre as selecionadas para a prova
+
+# ---------------------------------------------------------------------------------------------------------- #
+
+Scenario: Professor procura por questões de um assunto e há somente uma questão desse assunto
+    Given eu estou na página "criação de provas"
+    And eu vejo "uma" questões de "requisitos"
+    When eu seleciono questões de "requisitos"
+    Then eu vejo "uma" questões de "requistos"
+
+Scenario: Professor procura por questões de um assunto e não há questões no sistema
+    Given eu estou na página "criação de provas"
+    And eu não há questões de nenhum assunto
+    When eu seleciono questões de "requisitos"
+    Then a mensagem de que não há questões de "requisitos"
+    And a mensagem de que não há questões cadastradas
 
 Scenario: Professor inicia o processo de criar prova
     Given eu estou logado como "professor"
