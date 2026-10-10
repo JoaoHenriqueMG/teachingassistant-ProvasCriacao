@@ -5,7 +5,7 @@ suas turmas.
 
 Feature: Geração de provas
     Como um professor responsável por uma disciplina
-    Eu selecionar as questões para uma prova
+    Eu posso selecionar as questões para uma prova
     Para que posteriormente eu possa aplicar essa prova para a turma
 
 # --------------------------------------------------------------------------------------- #
